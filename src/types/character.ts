@@ -21,4 +21,6 @@ export interface Character {
   tier: 'S' | 'A' | 'B' | 'C';
   image: string;
   stats: Stats;
+  isDuplicate: boolean;
+  stars: number
 }

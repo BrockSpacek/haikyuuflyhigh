@@ -199,13 +199,13 @@
   },
   {
     "id": "010",
-    "name": "Oikawa Tooru",
+    "name": "Oikawa Toru",
     "school": "Aoba Johsai",
     "year": 3,
     "position": "Setter",
     "rarity": "Legendary",
     "tier": "S",
-    "image": "oikawa_tooru.png",
+    "image": "oikawa_toru.png",
     "stats": {
       "attack": 72,
       "block": 75,
