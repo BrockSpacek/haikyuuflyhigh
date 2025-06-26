@@ -1,30 +1,20 @@
 export const getRarityColor = (rarity: string): string => {
   switch (rarity) {
-    case 'Common':
-      return 'text-gray-600';
-    case 'Rare':
-      return 'text-blue-500';
-    case 'Epic':
-      return 'text-purple-600';
-    case 'Legendary':
-      return 'text-yellow-500';
-    default:
-      return '';
+    case 'Common': return 'text-gray-600';
+    case 'Rare': return 'text-blue-500';
+    case 'Epic': return 'text-purple-600';
+    case 'Legendary': return 'text-yellow-500';
+    default: return '';
   }
 };
 
 export const getTierBadge = (tier: string): string => {
   switch (tier) {
-    case 'S':
-      return '🔥 S-Tier';
-    case 'A':
-      return '⚡ A-Tier';
-    case 'B':
-      return '⭐ B-Tier';
-    case 'C':
-      return '⬇️ C-Tier';
-    default:
-      return tier;
+    case 'S': return '🔥 S-Tier';
+    case 'A': return '⚡ A-Tier';
+    case 'B': return '⭐ B-Tier';
+    case 'C': return '⬇️ C-Tier';
+    default: return tier;
   }
 };
 

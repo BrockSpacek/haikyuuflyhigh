@@ -1,7 +1,6 @@
-
-
+import { Character } from '@/types/character';
+import RadarChartStats from '@/components/RadarChatStats';
 import { getStatColor } from '@/utils/helpers';
-import { Character } from '@/utils/Interface';
 
 interface Props {
   character: Character;
@@ -25,7 +24,9 @@ export default function CharacterModal({ character, onClose }: Props) {
         </p>
         <p className="mb-3">{character.position} • {character.rarity} • Tier {character.tier}</p>
 
-        <h3 className="font-semibold mb-1">Stats:</h3>
+        <RadarChartStats character={character} />
+
+        <h3 className="font-semibold mt-4 mb-1">Stats:</h3>
         <div className="space-y-1">
           {Object.entries(character.stats).map(([key, value]) => (
             <div key={key}>
