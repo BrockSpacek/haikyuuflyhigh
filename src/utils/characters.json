@@ -1,0 +1,222 @@
+[
+  {
+    "id": "001",
+    "name": "Shoyo Hinata",
+    "school": "Karasuno High",
+    "year": 1,
+    "position": "Middle Blocker",
+    "rarity": "Epic",
+    "tier": "A",
+    "image": "hinata_shoyo.png",
+    "stats": {
+      "attack": 78,
+      "block": 45,
+      "serve": 62,
+      "receive": 55,
+      "set": 35,
+      "speed": 95,
+      "jump": 98,
+      "stamina": 88,
+      "technique": 65,
+      "mental": 82
+    }
+  },
+  {
+    "id": "002",
+    "name": "Tobio Kageyama",
+    "school": "Karasuno High",
+    "year": 1,
+    "position": "Setter",
+    "rarity": "Legendary",
+    "tier": "S",
+    "image": "kageyama_tobio.png",
+    "stats": {
+      "attack": 70,
+      "block": 80,
+      "serve": 92,
+      "receive": 60,
+      "set": 98,
+      "speed": 88,
+      "jump": 90,
+      "stamina": 86,
+      "technique": 95,
+      "mental": 85
+    }
+  },
+  {
+    "id": "003",
+    "name": "Tetsuro Kuroo",
+    "school": "Nekoma High",
+    "year": 3,
+    "position": "Middle Blocker",
+    "rarity": "Epic",
+    "tier": "A",
+    "image": "kuroo_tetsuro.png",
+    "stats": {
+      "attack": 82,
+      "block": 92,
+      "serve": 78,
+      "receive": 72,
+      "set": 65,
+      "speed": 75,
+      "jump": 85,
+      "stamina": 85,
+      "technique": 88,
+      "mental": 90
+    }
+  },
+  {
+    "id": "004",
+    "name": "Kenma Kozume",
+    "school": "Nekoma High",
+    "year": 2,
+    "position": "Setter",
+    "rarity": "Rare",
+    "tier": "B",
+    "image": "kenma_kozume.png",
+    "stats": {
+      "attack": 40,
+      "block": 30,
+      "serve": 65,
+      "receive": 75,
+      "set": 90,
+      "speed": 68,
+      "jump": 60,
+      "stamina": 60,
+      "technique": 85,
+      "mental": 92
+    }
+  },
+  {
+    "id": "005",
+    "name": "Kotaro Bokuto",
+    "school": "Fukurodani Academy",
+    "year": 3,
+    "position": "Wing Spiker",
+    "rarity": "Legendary",
+    "tier": "S",
+    "image": "bokuto_kotaro.png",
+    "stats": {
+      "attack": 95,
+      "block": 85,
+      "serve": 88,
+      "receive": 65,
+      "set": 50,
+      "speed": 85,
+      "jump": 92,
+      "stamina": 90,
+      "technique": 80,
+      "mental": 78
+    }
+  },
+  {
+    "id": "006",
+    "name": "Kei Tsukishima",
+    "school": "Karasuno High",
+    "year": 1,
+    "position": "Middle Blocker",
+    "rarity": "Rare",
+    "tier": "B",
+    "image": "tsukishima_kei.png",
+    "stats": {
+      "attack": 70,
+      "block": 88,
+      "serve": 60,
+      "receive": 60,
+      "set": 55,
+      "speed": 65,
+      "jump": 75,
+      "stamina": 70,
+      "technique": 70,
+      "mental": 80
+    }
+  },
+  {
+    "id": "007",
+    "name": "Asahi Azumane",
+    "school": "Karasuno High",
+    "year": 3,
+    "position": "Wing Spiker",
+    "rarity": "Epic",
+    "tier": "A",
+    "image": "asahi_azumane.png",
+    "stats": {
+      "attack": 88,
+      "block": 80,
+      "serve": 70,
+      "receive": 65,
+      "set": 45,
+      "speed": 70,
+      "jump": 85,
+      "stamina": 85,
+      "technique": 75,
+      "mental": 80
+    }
+  },
+  {
+    "id": "008",
+    "name": "Yu Nishinoya",
+    "school": "Karasuno High",
+    "year": 2,
+    "position": "Libero",
+    "rarity": "Epic",
+    "tier": "A",
+    "image": "nishinoya_yu.png",
+    "stats": {
+      "attack": 50,
+      "block": 30,
+      "serve": 70,
+      "receive": 98,
+      "set": 65,
+      "speed": 95,
+      "jump": 90,
+      "stamina": 88,
+      "technique": 80,
+      "mental": 95
+    }
+  },
+  {
+    "id": "009",
+    "name": "Hajime Iwaizumi",
+    "school": "Aoba Johsai",
+    "year": 3,
+    "position": "Wing Spiker",
+    "rarity": "Rare",
+    "tier": "B",
+    "image": "iwaizumi_hajime.png",
+    "stats": {
+      "attack": 82,
+      "block": 82,
+      "serve": 65,
+      "receive": 60,
+      "set": 58,
+      "speed": 78,
+      "jump": 85,
+      "stamina": 85,
+      "technique": 75,
+      "mental": 83
+    }
+  },
+  {
+    "id": "010",
+    "name": "Oikawa Tooru",
+    "school": "Aoba Johsai",
+    "year": 3,
+    "position": "Setter",
+    "rarity": "Legendary",
+    "tier": "S",
+    "image": "oikawa_tooru.png",
+    "stats": {
+      "attack": 72,
+      "block": 75,
+      "serve": 95,
+      "receive": 70,
+      "set": 98,
+      "speed": 90,
+      "jump": 88,
+      "stamina": 86,
+      "technique": 92,
+      "mental": 94
+    }
+  }
+]
