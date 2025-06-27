@@ -211,9 +211,47 @@ const VolleyballGame: React.FC = () => {
     return Math.random() < probability;
   };
 
-  // Find best player for specific action
-  const findBestPlayerForAction = (team: Team, action: string): Player => {
-    const playersOnCourt = getPlayersOnCourt(team);
+  // Find best player for specific action with position logic
+  const findBestPlayerForAction = (team: Team, action: string, excludePlayer?: Player): Player => {
+    const playersOnCourt = getPlayersOnCourt(team).filter(p => p.id !== excludePlayer?.id);
+    
+    // Position-based selection for certain actions
+    if (action === 'set') {
+      // Always prefer the actual setter (highest set stat)
+      const setter = playersOnCourt.reduce((best, current) => 
+        current.stats.set > best.stats.set ? current : best
+      );
+      return setter;
+    }
+    
+    if (action === 'receive' || action === 'dig') {
+      // Prefer libero or players with high receive stats
+      const defender = playersOnCourt.reduce((best, current) => {
+        // Bonus for libero-like stats (high receive, low attack)
+        const currentScore = current.stats.receive + (current.stats.receive > 85 && current.stats.attack < 50 ? 20 : 0);
+        const bestScore = best.stats.receive + (best.stats.receive > 85 && best.stats.attack < 50 ? 20 : 0);
+        return currentScore > bestScore ? current : best;
+      });
+      return defender;
+    }
+    
+    if (action === 'attack') {
+      // Prefer players with high attack stats
+      return playersOnCourt.reduce((best, current) => 
+        current.stats.attack > best.stats.attack ? current : best
+      );
+    }
+    
+    if (action === 'block') {
+      // Prefer middle blockers and tall players
+      return playersOnCourt.reduce((best, current) => {
+        const currentScore = current.stats.block + current.stats.jump * 0.5;
+        const bestScore = best.stats.block + best.stats.jump * 0.5;
+        return currentScore > bestScore ? current : best;
+      });
+    }
+    
+    // Default: best overall for the action
     return playersOnCourt.reduce((best, current) => {
       const currentProb = calculateSuccessProbability(current, action);
       const bestProb = calculateSuccessProbability(best, action);
@@ -227,24 +265,24 @@ const VolleyballGame: React.FC = () => {
     let currentAttackingTeam = homeTeam.serving ? homeTeam : awayTeam;
     let currentDefendingTeam = homeTeam.serving ? awayTeam : homeTeam;
     let rallyCount = 0;
+    let lastPlayerTouch: Player | undefined;
     const maxRallies = 20; // Prevent infinite loops
     
     // 1. Initial Serve
     const server = getPlayersOnCourt(currentAttackingTeam)[0]; // Position 1 serves
     const serveProb = calculateSuccessProbability(server, 'serve');
     const serveSuccess = simulateAction(serveProb);
+    lastPlayerTouch = server;
     
     log.push(`${server.name} serves (${(serveProb * 100).toFixed(1)}% chance)`);
     
     if (!serveSuccess) {
-      // Service error - immediate point
+      // Service error - immediate point (no foot faults)
       const errorType = Math.random();
-      if (errorType < 0.4) {
+      if (errorType < 0.6) {
         log.push(`❌ Service error - ball hits the net! Point to ${currentDefendingTeam.name}`);
-      } else if (errorType < 0.7) {
-        log.push(`❌ Service error - ball goes out! Point to ${currentDefendingTeam.name}`);
       } else {
-        log.push(`❌ Service error - foot fault! Point to ${currentDefendingTeam.name}`);
+        log.push(`❌ Service error - serve goes out! Point to ${currentDefendingTeam.name}`);
       }
       return { winner: homeTeam.serving ? 'away' : 'home', log };
     }
@@ -255,50 +293,53 @@ const VolleyballGame: React.FC = () => {
     while (rallyCount < maxRallies) {
       rallyCount++;
       
-      // 2. Receive/Dig
-      const receiver = findBestPlayerForAction(currentDefendingTeam, 'receive');
+      // 2. Receive/Dig (exclude last player who touched)
+      const receiver = findBestPlayerForAction(currentDefendingTeam, rallyCount === 1 ? 'receive' : 'dig', lastPlayerTouch);
       const receiveProb = calculateSuccessProbability(receiver, 'receive');
       const receiveSuccess = simulateAction(receiveProb);
+      lastPlayerTouch = receiver;
       
       const actionName = rallyCount === 1 ? 'receives' : 'digs';
       log.push(`${receiver.name} ${actionName} (${(receiveProb * 100).toFixed(1)}% chance)`);
       
       if (!receiveSuccess) {
         const errorType = Math.random();
-        if (errorType < 0.5) {
+        if (errorType < 0.7) {
           log.push(`❌ ${actionName === 'receives' ? 'Reception' : 'Dig'} error - ball hits the ground! Point to ${currentAttackingTeam.name}`);
         } else {
-          log.push(`❌ ${actionName === 'receives' ? 'Reception' : 'Dig'} error - ball goes out of bounds! Point to ${currentAttackingTeam.name}`);
+          log.push(`❌ ${actionName === 'receives' ? 'Reception' : 'Dig'} error - ball shanked out of bounds! Point to ${currentAttackingTeam.name}`);
         }
         return { winner: currentAttackingTeam === homeTeam ? 'home' : 'away', log };
       }
       
       log.push(`✅ Good ${actionName}!`);
       
-      // 3. Set
-      const setter = findBestPlayerForAction(currentDefendingTeam, 'set');
+      // 3. Set (exclude receiver, always use actual setter)
+      const setter = findBestPlayerForAction(currentDefendingTeam, 'set', lastPlayerTouch);
       const setProb = calculateSuccessProbability(setter, 'set');
       const setSuccess = simulateAction(setProb);
+      lastPlayerTouch = setter;
       
       log.push(`${setter.name} sets (${(setProb * 100).toFixed(1)}% chance)`);
       
       if (!setSuccess) {
         const errorType = Math.random();
-        if (errorType < 0.4) {
-          log.push(`❌ Setting error - double touch! Point to ${currentAttackingTeam.name}`);
-        } else if (errorType < 0.7) {
+        if (errorType < 0.3) {
+          log.push(`❌ Setting error - double contact! Point to ${currentAttackingTeam.name}`);
+        } else if (errorType < 0.6) {
           log.push(`❌ Setting error - ball goes into the net! Point to ${currentAttackingTeam.name}`);
         } else {
-          log.push(`❌ Setting error - overpass! Point to ${currentAttackingTeam.name}`);
+          log.push(`❌ Setting error - overpass out of bounds! Point to ${currentAttackingTeam.name}`);
         }
         return { winner: currentAttackingTeam === homeTeam ? 'home' : 'away', log };
       }
       
       log.push(`✅ Good set!`);
       
-      // 4. Attack vs Block/Defense
-      const attacker = findBestPlayerForAction(currentDefendingTeam, 'attack');
+      // 4. Attack vs Block/Defense (attacker can't be setter)
+      const attacker = findBestPlayerForAction(currentDefendingTeam, 'attack', lastPlayerTouch);
       const blocker = findBestPlayerForAction(currentAttackingTeam, 'block');
+      lastPlayerTouch = attacker;
       
       const attackProb = calculateSuccessProbability(attacker, 'attack', blocker);
       const blockProb = calculateSuccessProbability(blocker, 'block');
@@ -312,24 +353,36 @@ const VolleyballGame: React.FC = () => {
       if (blockSuccess) {
         // Successful block
         const blockType = Math.random();
-        if (blockType < 0.6) {
+        if (blockType < 0.4) {
           log.push(`🛡️ Block kill! ${blocker.name} stuff blocks! Point to ${currentAttackingTeam.name}`);
           return { winner: currentAttackingTeam === homeTeam ? 'home' : 'away', log };
         } else {
-          log.push(`🛡️ Block touch! Ball deflected by ${blocker.name}`);
-          // Ball is deflected but rally continues - attacking team keeps possession
-          continue;
+          // Block touch - random possession
+          const blockTouchPossession = Math.random();
+          if (blockTouchPossession < 0.6) {
+            log.push(`🛡️ Block touch by ${blocker.name} - ball goes back to ${currentDefendingTeam.name}!`);
+            // Ball goes back to attacking team (they keep possession)
+            lastPlayerTouch = blocker; // Blocker touched it last
+            continue;
+          } else {
+            log.push(`🛡️ Block touch by ${blocker.name} - ball deflected to ${currentAttackingTeam.name}!`);
+            // Ball goes to defending team (switch possession)
+            [currentAttackingTeam, currentDefendingTeam] = [currentDefendingTeam, currentAttackingTeam];
+            lastPlayerTouch = blocker;
+            continue;
+          }
         }
       } else if (attackSuccess) {
         // Attack succeeds vs block
         const attackType = Math.random();
-        if (attackType < 0.7) {
-          log.push(`⚡ Kill! ${attacker.name} puts it away! Point to ${currentDefendingTeam.name}`);
+        if (attackType < 0.75) {
+          log.push(`⚡ Kill! ${attacker.name} puts it down! Point to ${currentDefendingTeam.name}`);
           return { winner: currentDefendingTeam === homeTeam ? 'home' : 'away', log };
         } else {
-          log.push(`💥 Hard-driven attack by ${attacker.name} - defended!`);
+          log.push(`💥 Hard spike by ${attacker.name} - somehow kept alive!`);
           // Attack was hard but defended, switch sides
           [currentAttackingTeam, currentDefendingTeam] = [currentDefendingTeam, currentAttackingTeam];
+          lastPlayerTouch = attacker;
           continue;
         }
       } else {
@@ -338,9 +391,9 @@ const VolleyballGame: React.FC = () => {
         if (errorType < 0.4) {
           log.push(`❌ Attack error - ${attacker.name} hits it into the net! Point to ${currentAttackingTeam.name}`);
         } else if (errorType < 0.8) {
-          log.push(`❌ Attack error - ${attacker.name} hits it out! Point to ${currentAttackingTeam.name}`);
+          log.push(`❌ Attack error - ${attacker.name} hits it out of bounds! Point to ${currentAttackingTeam.name}`);
         } else {
-          log.push(`❌ Attack error - ${attacker.name} hits it long! Point to ${currentAttackingTeam.name}`);
+          log.push(`❌ Attack error - ${attacker.name} hits it wide! Point to ${currentAttackingTeam.name}`);
         }
         return { winner: currentAttackingTeam === homeTeam ? 'home' : 'away', log };
       }
@@ -348,7 +401,7 @@ const VolleyballGame: React.FC = () => {
     
     // Fallback if max rallies reached
     const winner = Math.random() < 0.5 ? 'home' : 'away';
-    log.push(`🏐 Long rally ends after ${maxRallies} exchanges! Point to ${winner === 'home' ? homeTeam.name : awayTeam.name}`);
+    log.push(`🏐 Epic ${maxRallies}-exchange rally ends! Point to ${winner === 'home' ? homeTeam.name : awayTeam.name}`);
     return { winner, log };
   };
 
