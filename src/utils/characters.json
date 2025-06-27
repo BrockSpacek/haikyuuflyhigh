@@ -218,5 +218,292 @@
       "technique": 92,
       "mental": 94
     }
+  },
+  {
+  "id": "011",
+  "name": "Wakatoshi Ushijima",
+  "school": "Shiratorizawa Academy",
+  "year": 3,
+  "position": "Opposite",
+  "rarity": "Legendary",
+  "tier": "S",
+  "image": "ushijima_wakatoshi.png",
+  "stats": {
+    "attack": 98,
+    "block": 90,
+    "serve": 92,
+    "receive": 60,
+    "set": 50,
+    "speed": 80,
+    "jump": 95,
+    "stamina": 90,
+    "technique": 85,
+    "mental": 88
+  }
+},
+{
+  "id": "012",
+  "name": "Satori Tendou",
+  "school": "Shiratorizawa Academy",
+  "year": 3,
+  "position": "Middle Blocker",
+  "rarity": "Epic",
+  "tier": "A",
+  "image": "tendou_satori.png",
+  "stats": {
+    "attack": 75,
+    "block": 88,
+    "serve": 70,
+    "receive": 65,
+    "set": 60,
+    "speed": 72,
+    "jump": 78,
+    "stamina": 80,
+    "technique": 90,
+    "mental": 85
+  }
+},
+{
+  "id": "013",
+  "name": "Atsumu Miya",
+  "school": "Inarizaki High",
+  "year": 2,
+  "position": "Setter",
+  "rarity": "Legendary",
+  "tier": "S",
+  "image": "miya_atsumu.png",
+  "stats": {
+    "attack": 68,
+    "block": 70,
+    "serve": 95,
+    "receive": 75,
+    "set": 96,
+    "speed": 88,
+    "jump": 85,
+    "stamina": 85,
+    "technique": 94,
+    "mental": 90
+  }
+},
+{
+  "id": "014",
+  "name": "Osamu Miya",
+  "school": "Inarizaki High",
+  "year": 2,
+  "position": "Wing Spiker",
+  "rarity": "Epic",
+  "tier": "A",
+  "image": "miya_osamu.png",
+  "stats": {
+    "attack": 85,
+    "block": 78,
+    "serve": 82,
+    "receive": 70,
+    "set": 65,
+    "speed": 75,
+    "jump": 80,
+    "stamina": 83,
+    "technique": 88,
+    "mental": 84
+  }
+},
+ {
+    "id": "015",
+    "name": "Aran Ojiro",
+    "school": "Inarizaki High",
+    "year": 3,
+    "position": "Wing Spiker",
+    "rarity": "Epic",
+    "tier": "A",
+    "image": "ojiro_aran.png",
+    "stats": {
+      "attack": 90,
+      "block": 82,
+      "serve": 80,
+      "receive": 75,
+      "set": 58,
+      "speed": 85,
+      "jump": 87,
+      "stamina": 88,
+      "technique": 82,
+      "mental": 86
+    }
+},
+{
+    "id": "016",
+    "name": "Rintarou Suna",
+    "school": "Inarizaki High",
+    "year": 2,
+    "position": "Middle Blocker",
+    "rarity": "Epic",
+    "tier": "A",
+    "image": "suna_rintarou.png",
+    "stats": {
+      "attack": 82,
+      "block": 89,
+      "serve": 72,
+      "receive": 68,
+      "set": 62,
+      "speed": 78,
+      "jump": 82,
+      "stamina": 80,
+      "technique": 85,
+      "mental": 84
+    }
+  },
+  {
+    "id": "017",
+    "name": "Lev Haiba",
+    "school": "Nekoma High",
+    "year": 1,
+    "position": "Middle Blocker",
+    "rarity": "Rare",
+    "tier": "B",
+    "image": "haiba_lev.png",
+    "stats": {
+      "attack": 78,
+      "block": 75,
+      "serve": 65,
+      "receive": 60,
+      "set": 55,
+      "speed": 72,
+      "jump": 92,
+      "stamina": 78,
+      "technique": 68,
+      "mental": 70
+    }
+  },
+  {
+    "id": "018",
+    "name": "Takamoto Yamamoto",
+    "school": "Nekoma High",
+    "year": 2,
+    "position": "Wing Spiker",
+    "rarity": "Rare",
+    "tier": "B",
+    "image": "yamamoto_takamoto.png",
+    "stats": {
+      "attack": 80,
+      "block": 70,
+      "serve": 68,
+      "receive": 60,
+      "set": 50,
+      "speed": 75,
+      "jump": 80,
+      "stamina": 75,
+      "technique": 70,
+      "mental": 72
+    }
+  },
+  {
+    "id": "019",
+    "name": "Keiji Akaashi",
+    "school": "Fukurodani Academy",
+    "year": 2,
+    "position": "Setter",
+    "rarity": "Epic",
+    "tier": "A",
+    "image": "akaashi_keiji.png",
+    "stats": {
+      "attack": 58,
+      "block": 68,
+      "serve": 75,
+      "receive": 72,
+      "set": 95,
+      "speed": 80,
+      "jump": 78,
+      "stamina": 82,
+      "technique": 90,
+      "mental": 88
+    }
+  },
+  {
+    "id": "020",
+    "name": "Haruki Komi",
+    "school": "Fukurodani Academy",
+    "year": 3,
+    "position": "Libero",
+    "rarity": "Rare",
+    "tier": "B",
+    "image": "komi_haruki.png",
+    "stats": {
+      "attack": 30,
+      "block": 28,
+      "serve": 65,
+      "receive": 95,
+      "set": 70,
+      "speed": 88,
+      "jump": 75,
+      "stamina": 80,
+      "technique": 85,
+      "mental": 85
+    }
+  },
+  {
+    "id": "021",
+    "name": "Reon Ohira",
+    "school": "Shiratorizawa Academy",
+    "year": 3,
+    "position": "Wing Spiker",
+    "rarity": "Rare",
+    "tier": "B",
+    "image": "ohira_reon.png",
+    "stats": {
+      "attack": 80,
+      "block": 78,
+      "serve": 68,
+      "receive": 65,
+      "set": 55,
+      "speed": 70,
+      "jump": 82,
+      "stamina": 80,
+      "technique": 75,
+      "mental": 78
+    }
+  },
+  {
+    "id": "022",
+    "name": "Shigeru Yahaba",
+    "school": "Aoba Johsai",
+    "year": 2,
+    "position": "Setter",
+    "rarity": "Rare",
+    "tier": "B",
+    "image": "yahaba_shigeru.png",
+    "stats": {
+      "attack": 55,
+      "block": 60,
+      "serve": 70,
+      "receive": 65,
+      "set": 85,
+      "speed": 75,
+      "jump": 72,
+      "stamina": 75,
+      "technique": 78,
+      "mental": 76
+    }
+  },
+  {
+    "id": "023",
+    "name": "Yudai Hyakuzawa",
+    "school": "Johzenji High",
+    "year": 2,
+    "position": "Middle Blocker",
+    "rarity": "Rare",
+    "tier": "C",
+    "image": "hyakuzawa_yudai.png",
+    "stats": {
+      "attack": 85,
+      "block": 80,
+      "serve": 60,
+      "receive": 50,
+      "set": 40,
+      "speed": 68,
+      "jump": 88,
+      "stamina": 75,
+      "technique": 60,
+      "mental": 70
+    }
   }
 ]
+
