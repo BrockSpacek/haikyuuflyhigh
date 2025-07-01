@@ -12,3 +12,9 @@ Characters
 * Make sure every main character card is added and give stats
 * start working on ways to pull characters as dupes even if the others have not been unlocked
 * Keep track of dupes with a counter
+
+Pack Opening 
+* 3 characters per pack
+* 4 different tiers
+* Make different versions of characters
+* 
