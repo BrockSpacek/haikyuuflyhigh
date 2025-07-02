@@ -18,3 +18,8 @@ Pack Opening
 * 4 different tiers
 * Make different versions of characters
 * 
+
+Arena and PVP
+* Add Modes in
+* Backend needed
+* Search for users and add friends
