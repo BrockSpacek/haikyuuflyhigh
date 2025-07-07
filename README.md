@@ -17,9 +17,11 @@ Pack Opening
 * 3 characters per pack
 * 4 different tiers
 * Make different versions of characters
+* Different types of packs/characters
 * 
 
 Arena and PVP
 * Add Modes in
 * Backend needed
 * Search for users and add friends
+* Higher Stats > chance for success
