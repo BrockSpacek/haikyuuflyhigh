@@ -485,20 +485,20 @@ const VolleyballGame: React.FC = () => {
           <button
             onClick={playPoint}
             disabled={isPlaying}
-            className="bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white px-6 py-2 rounded-lg font-semibold"
+            className="bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white px-6 py-2 rounded-lg font-semibold cursor-pointer"
           >
             Play Point
           </button>
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-semibold flex items-center gap-2"
+            className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-semibold flex items-center gap-2 cursor-pointer"
           >
             {isPlaying ? <Pause size={16} /> : <Play size={16} />}
             {isPlaying ? 'Pause' : 'Auto Play'}
           </button>
           <button
             onClick={resetGame}
-            className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg font-semibold flex items-center gap-2"
+            className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg font-semibold flex items-center gap-2 cursor-pointer"
           >
             <RotateCcw size={16} />
             Reset Game
